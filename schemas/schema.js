@@ -7,63 +7,33 @@ export let typeDefs = gql`
   }
 
   type Subscription {
-    regionAdded: Region
+    classAdded: Class
   }
 
 
   scalar Date
 
-  enum SummaryKind {
-    IN,
-    OUT,
-    CROSS,
-    PASSENGERS
-  }
 
   type GeoCenter {
     lat: Float
     lon: Float
   }
 
-  type Serie {
-    labels: [String]
-    values: [[Int]]
-  }
 
-  type Camera implements INode {
-    id: ID!
-    cameraId: Int
-    name: String!
-    location: GeoCenter!
-  }
-
-  type Summary implements INode {
-    id: ID!
-
-    kind: SummaryKind!
-    value: Int!
-  }
-
-  type Region implements INode{
+  type Class implements INode{
 
     id: ID!
 
-    regionId: Int
+    classId: Int
     center: GeoCenter
-    cameras: [Camera]
 
     name: String,
-    summary(from: Date!, till: Date!, kind: SummaryKind!): Summary,
-    summaries(from: Date!, till: Date!): [Summary!]
 
-    disrtibution(from: Date!, till: Date!): Serie
-    frequencyDistribution(from: Date!, till: Date!): Serie
-    clusterDistribution(from: Date!, till: Date!): Serie
   }
 
   type Query {
-    region(regionId: Int!): Region,
-    regions: [Region]
+    class(classId: Int!): Class,
+    classes: [Class]
   }
 
 `;
