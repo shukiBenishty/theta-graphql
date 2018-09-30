@@ -17,26 +17,26 @@ const pubsub = new PubSub();
 
 const REGION_ADDED = 'REGION_ADDED';
 
-setInterval(() => {
-  let database = new Database(config);
-  let _classSymbol = classSymbol.class[casual.integer(0, classSymbol.class.length) ].id
-  database.query(`SELECT * FROM elamayan_class WHERE groupSymbol = ${_classSymbol}`)
-    .then( rows => {
-      database.close();
-      console.log(rows[0].groupSymbol);
-      pubsub.publish(REGION_ADDED, {
-          classAdded: {
-            id: rows[0].groupSymbol,
-            name: rows[0].description,
-            center: {
-                lat: "32.066667",
-                lon: "34.783333"
-            }
-          }
-        })
-    });
-
-}, 2000);
+// setInterval(() => {
+//   let database = new Database(config);
+//   let _classSymbol = classSymbol.class[casual.integer(0, classSymbol.class.length) ].id
+//   database.query(`SELECT * FROM elamayan_class WHERE groupSymbol = ${_classSymbol}`)
+//     .then( rows => {
+//       database.close();
+//       console.log(rows[0].groupSymbol);
+//       pubsub.publish(REGION_ADDED, {
+//           classAdded: {
+//             id: rows[0].groupSymbol,
+//             name: rows[0].description,
+//             center: {
+//                 lat: "32.066667",
+//                 lon: "34.783333"
+//             }
+//           }
+//         })
+//     });
+//
+// }, 2000);
 
 export let resolvers = {
   Subscription: {
